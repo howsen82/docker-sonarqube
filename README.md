@@ -202,3 +202,28 @@ Once the process has completed, a report called `dependency-check-report.html` w
 
 ### Conclusion
 You have learned how Software Composition Analysis (SCA) can help you detect known vulnerabilities in any dependencies your code is dependent on. This is an integral part of secure software application development.
+
+## Installing Bandit
+
+Bandit is an open-source static application security testing (SAST) tool that can scan for vulnerabilities in web applications written in Python. Setting it up is very simple:
+
+```
+pip install bandit
+```
+
+### Find the Vulnerability
+Run the `bandit` command using the `-r` flag and passing in the name fo the file `web_app_example.py` as a parameter:
+
+```
+bandit -r web_app_example.py
+```
+
+Under the "Test results" section, we see that Bandit has identified one issue - "Possible SQL injection vector through string-based query construction". Bandit also provided us with the exact location where the vulnerability occurred: line 16. Now we're aware that the syntax used in the SQL query introduces risk. Let's take a closer look at why the query was identified as a SQL injection vulnerability.
+
+Use the bandit tool on your database projects to see if they contain any SQL vulnerabilities.
+
+If you're interested in learning more about SQL injection attacks, how to detect and prevent them, visit the following resources:
+
+* [OWASP SQL Injection Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html)
+* [Query Parameterization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Query_Parameterization_Cheat_Sheet.html)
+* [OWASP Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
