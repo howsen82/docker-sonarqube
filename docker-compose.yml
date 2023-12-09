@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  sonarqube:
+    container_name: sonarqube
+    image: sonarqube:latest
+    environment:
+      - sonar.jdbc.url=jdbc:postgresql://postgres/postgres
+      - sonar.jdbc.username=root
+      - sonar.jdbc.password=Test12345
+    ports:
+      - 9090:9000
+    networks:
+      - mynet
+    depends_on:
+      - postgres
+  
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=Test12345
+    ports:
+      - 5432:5432
+    networks:
+      - mynet
+
+networks:
+  mynet:
